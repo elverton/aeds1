@@ -8,21 +8,25 @@ Locadora* cria_locadora(int max_filmes, int max_clientes, int max_locacoes){
 	l->filmes = (Filme*)malloc(max_filmes*sizeof(Filme));
 	l->clientes = (Cliente*)malloc(max_clientes*sizeof(Cliente));
 	l->locacoes = (Locacao*)malloc(max_locacoes*sizeof(Locacao));
-	l->num_filmes = 0;
+	for(int i=0; i<max_locacoes; i++){
+        l->locacoes[i].id_cliente = -1;
+        l->locacoes[i].id_filme = -1;
+    }
+    l->num_filmes = 0;
 	l->num_clientes = 0;
 	l->num_locacoes = 0;
 	return l;
 }
 
-void insere_cliente(Locadora *l, char *nome, char *endereco){
-	l->clientes[l->num_clientes].id = l->num_clientes;
+void insere_cliente(Locadora *l, int id, char *nome, char *endereco){
+	l->clientes[l->num_clientes].id = id;
 	strcpy(l->clientes[l->num_clientes].nome, nome);
 	strcpy(l->clientes[l->num_clientes].endereco, endereco);
 	l->num_clientes++;
 }
 
-void insere_filme(Locadora *l, char *nome, int ano, int duracao){
-	l->filmes[l->num_filmes].id = l->num_filmes;
+void insere_filme(Locadora *l, int id, char *nome, int ano, int duracao){
+	l->filmes[l->num_filmes].id = id;
 	strcpy(l->filmes[l->num_filmes].nome, nome);
 	l->filmes[l->num_filmes].ano = ano;
 	l->filmes[l->num_filmes].duracao = duracao;
@@ -33,8 +37,8 @@ void locacao(Locadora *l, int id_filme, int id_cliente){
 	int idx = 0;
 	while(1){
 		if(l->locacoes[idx].id_filme != -1){
-			continue;
 			idx++;
+			continue;
 		}
 		l->locacoes[idx].id_filme = id_filme;
 		l->locacoes[idx].id_cliente = id_cliente;
@@ -46,8 +50,8 @@ void devolucao(Locadora *l, int id_filme){
 	int idx = 0;
 	while(1){
 		if(l->locacoes[idx].id_filme != id_filme){
-			continue;
 			idx++;
+			continue;
 		}
 		l->locacoes[idx].id_filme = -1;
 		l->locacoes[idx].id_cliente = -1;

@@ -10,10 +10,10 @@ Cliente* cria_cliente(int id, char *nome, char *endereco){
 	return f;
 }
 
-int recupera_id(Cliente *f){
+int recupera_id_cliente(Cliente *f){
 	return f->id;
 }
-char* recupera_nome(Cliente *f){
+char* recupera_nome_cliente(Cliente *f){
 	return f->nome;
 }
 

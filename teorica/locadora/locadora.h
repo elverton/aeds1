@@ -1,6 +1,9 @@
 #ifndef LOCADORA_H
 #define LOCADORA_H
 
+#include "filme.h"
+#include "cliente.h"
+
 typedef struct {
 	int id_cliente;
 	int id_filme;
@@ -16,8 +19,8 @@ typedef struct {
 } Locadora;
 
 Locadora* cria_locadora(int max_filmes, int max_clientes, int max_locacoes);
-void insere_cliente(Locadora *l, int id, char *nome, char *endereco);
-void insere_filme(Locadora *l, int id, char *nome, int ano, int duracao);
+void insere_cliente(Locadora *l, char *nome, char *endereco);
+void insere_filme(Locadora *l, char *nome, int ano, int duracao);
 void locacao(Locadora *l, int id_filme, int id_cliente);
 void devolucao(Locadora *l, int id_filme);
 void exibe_filmes(Locadora *l);

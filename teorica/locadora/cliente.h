@@ -8,8 +8,8 @@ typedef struct {
 } Cliente;
 
 Cliente* cria_cliente(int id, char *nome, char *endereco);
-int recupera_id(Cliente *f);
-char *recupera_nome(Cliente *f);
+int recupera_id_cliente(Cliente *f);
+char *recupera_nome_cliente(Cliente *f);
 void destroi_cliente(Cliente *f);
 
 

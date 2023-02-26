@@ -314,7 +314,7 @@ void sprite_animate(Sprite* s) {
 }
 
 void map0_setup(Game *g){
-    g->maps[0].background = LoadTexture("sprites/background.png");
+    g->maps[0].background = LoadTexture("backgrounds/background_0.png");
     g->maps[0].num_barriers = 1;
     g->maps[0].base_floor = (Rectangle) {0, 415, g->screenWidth, 2};
 }

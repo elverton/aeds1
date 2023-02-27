@@ -96,6 +96,10 @@ int main(void)
     
     InitGame(&game);
 
+    InitAudioDevice();
+    Sound intro = LoadSound("sounds/intro.mp3");
+    PlaySound(intro);
+
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
         UpdateDrawFrame(&game);
@@ -153,7 +157,7 @@ void draw_map(Game *g){
 
     Map *map = &g->maps[g->curr_map];
     DrawTexture(map->background, 0, 0, (Color) {255, 255, 255, 255});
-    DrawRectangleRec(map->base_floor, BLACK);
+    DrawRectangleRec(map->base_floor, (Color) {0, 0, 0, 0});
 }
 
 void update_megaman_pos(Game *g){
@@ -171,14 +175,6 @@ void update_megaman_pos(Game *g){
         }
         megaman->jump_actual += megaman->jump_acceleration;
     }
-
-    //     if(IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
-    //         megaman->pos.x -= megaman->speed;
-    //     } else if(IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) {
-    //         megaman->pos.x += megaman->speed;
-    //     }        
-    //     return;
-    // }
 
     if(IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
         megaman->pos.x -= megaman->speed;
